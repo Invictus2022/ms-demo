@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SchoolService {
+public class SchoolService implements SchoolServiceImpl {
     @Autowired
     private final SchoolRepository repository;
 
@@ -20,7 +20,8 @@ public class SchoolService {
         this.repository = repository;
     }
 
-    ResponseEntity<List<SchoolModel>> getSchool(){
+    @Override
+    public ResponseEntity<List<SchoolModel>> getSchool(){
         try {
             return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
         }catch (Exception e){
@@ -28,7 +29,8 @@ public class SchoolService {
         }
     }
 
-    ResponseEntity<String> postSchool(SchoolModel model){
+    @Override
+    public ResponseEntity<String> postSchool(SchoolModel model){
         try {
             repository.save(model);
             return new ResponseEntity<>("Schoold successfully added",HttpStatus.OK);
@@ -37,7 +39,8 @@ public class SchoolService {
         }
     }
 
-    ResponseEntity<String> deleteSchool(Long id){
+    @Override
+    public ResponseEntity<String> deleteSchool(Long id){
         Optional<SchoolModel> model = repository.findById(id);
         if (model.isPresent()){
             repository.deleteById(id);
