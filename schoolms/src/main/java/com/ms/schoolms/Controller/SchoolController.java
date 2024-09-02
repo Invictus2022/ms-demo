@@ -1,9 +1,9 @@
 package com.ms.schoolms.Controller;
 
 
+import com.ms.schoolms.Model.FullSchoolModel;
 import com.ms.schoolms.Model.SchoolModel;
 import com.ms.schoolms.Service.SchoolServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +13,13 @@ import java.util.List;
 @RequestMapping( value = "/school")
 public class SchoolController {
 
-    @Autowired
+
     private final SchoolServiceImpl service;
+
 
     public SchoolController(SchoolServiceImpl service){
         this.service = service;
+
     }
 
     @GetMapping
@@ -32,6 +34,11 @@ public class SchoolController {
     @DeleteMapping("/{id}")
     public  ResponseEntity<String> deleteSchool(@PathVariable("id") Long id){
         return service.deleteSchool(id);
+    }
+
+    @GetMapping("students/{school_id}")
+    public ResponseEntity<FullSchoolModel> getSchoolWithStudents(@PathVariable("school_id") Long schoolId){
+        return service.getSchoolWithStudents(schoolId);
     }
 
 }

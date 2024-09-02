@@ -1,6 +1,7 @@
 package com.ms.schoolms.Service;
 
 
+import com.ms.schoolms.Model.FullSchoolModel;
 import com.ms.schoolms.Model.SchoolModel;
 import com.ms.schoolms.Repository.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,19 @@ public class SchoolService implements SchoolServiceImpl {
         }else {
             return new ResponseEntity<>("Invalid School id",HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public ResponseEntity<FullSchoolModel> getSchoolWithStudents(Long schoolId){
+        SchoolModel school;
+        school = repository.findById(schoolId)
+                .orElse(
+                        SchoolModel.builder()
+                                .name("NOT_FOUND")
+                                .email("NOT_FOUND")
+                                .build()
+                );
+        var students = null;
+        return null;
     }
 
 }

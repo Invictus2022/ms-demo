@@ -1,6 +1,7 @@
 package com.ms.schoolms.Service;
 
 
+import com.ms.schoolms.Model.FullSchoolModel;
 import com.ms.schoolms.Model.SchoolModel;
 import org.springframework.http.ResponseEntity;
 
@@ -13,4 +14,6 @@ public interface SchoolServiceImpl {
     ResponseEntity<String> postSchool(SchoolModel model);
 
     ResponseEntity<String> deleteSchool(Long id);
+
+    ResponseEntity<FullSchoolModel> getSchoolWithStudents(Long schoolId);
 }

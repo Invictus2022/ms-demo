@@ -2,10 +2,7 @@ package com.ms.schoolms.Model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "school")
-
+@Builder
 public class SchoolModel {
 
 
@@ -26,6 +23,7 @@ public class SchoolModel {
 
     @Column(name = "email")
     private  String email;
+
 
     public Long getId(){
         return id;
