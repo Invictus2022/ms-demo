@@ -10,6 +10,11 @@
         <option value="$PROJECT_DIR$/demoMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/demoMicroservice (1)/demoMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/demoMicroservice (2)/demoMicroservice/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
+        <option value="$PROJECT_DIR$/ConfigServer/pom.xml" />
+        <option value="$PROJECT_DIR$/EurekaDiscoveryServer/pom.xml" />
+        <option value="$PROJECT_DIR$/schoolms/pom.xml" />
+        <option value="$PROJECT_DIR$/studentms/pom.xml" />
       </list>
     </option>
   </component>

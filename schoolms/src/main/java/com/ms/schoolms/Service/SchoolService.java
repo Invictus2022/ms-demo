@@ -3,7 +3,9 @@ package com.ms.schoolms.Service;
 
 import com.ms.schoolms.Model.FullSchoolModel;
 import com.ms.schoolms.Model.SchoolModel;
+import com.ms.schoolms.Model.StudentModel;
 import com.ms.schoolms.Repository.SchoolRepository;
+import com.ms.schoolms.StudentClient.StudentClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,14 @@ import java.util.Optional;
 public class SchoolService implements SchoolServiceImpl {
     @Autowired
     private final SchoolRepository repository;
+    private  final StudentClient studentClient;
+    private  final FullSchoolModel fullSchoolModel;
 
-    public SchoolService(SchoolRepository repository){
+    public SchoolService(SchoolRepository repository, StudentClient studentClient,
+                         FullSchoolModel fullSchoolModel){
         this.repository = repository;
+        this.studentClient = studentClient;
+        this.fullSchoolModel = fullSchoolModel;
     }
 
     @Override
@@ -60,8 +67,16 @@ public class SchoolService implements SchoolServiceImpl {
                                 .email("NOT_FOUND")
                                 .build()
                 );
-        var students = null;
-        return null;
+        ResponseEntity<List<StudentModel>> studRes = studentClient.getStudentsBySchool(schoolId);
+        List<StudentModel> students = studRes.getBody();
+
+        FullSchoolModel fullSchoolModel = FullSchoolModel.builder()
+                .name(school.getName())
+                .email(school.getEmail())
+                .student(students)
+                .build();
+
+        return new ResponseEntity<>(fullSchoolModel,HttpStatus.OK) ;
     }
 
 }

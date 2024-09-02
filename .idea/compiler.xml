@@ -2,23 +2,26 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="demoMicroservice" />
+        <module name="demoMicroservice (1) (com.two)" />
+        <module name="schoolms" />
+        <module name="demoMicroservice (1) (com.three)" />
+        <module name="studentms" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demoMicroservice (1) (com.three)" target="22" />
-      <module name="demoMicroservice (1) (com.two)" target="22" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demoMicroservice" options="-parameters" />
       <module name="demoMicroservice (1) (com.three)" options="-parameters" />
       <module name="demoMicroservice (1) (com.two)" options="-parameters" />
+      <module name="schoolms" options="-parameters" />
+      <module name="studentms" options="-parameters" />
     </option>
   </component>
 </project>
